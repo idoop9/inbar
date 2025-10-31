@@ -23,14 +23,12 @@
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--maxw);margin:0 auto;padding:24px}
-
     .nav{position:sticky;top:0;backdrop-filter:blur(8px);background:rgba(15,23,42,.6);border-bottom:1px solid rgba(255,255,255,.06);z-index:20}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 24px;max-width:var(--maxw);margin:0 auto}
     .brand{font-weight:800;letter-spacing:.2px}
     .menu{display:flex;gap:18px}
     .menu a{color:var(--muted);font-weight:600}
     .menu a:hover{color:var(--text)}
-
     .hero{padding:72px 24px 40px;text-align:center;position:relative}
     .hero h1{font-size:clamp(32px,6vw,54px);line-height:1.1;margin:0 0 12px}
     .hero p{color:var(--muted);margin:0 auto 22px;max-width:700px}
@@ -38,7 +36,6 @@
       position:absolute;top:20px;right:20px;width:130px;height:130px;border-radius:50%;
       object-fit:cover;border:3px solid var(--brand);box-shadow:0 0 12px rgba(34,211,238,.4)
     }
-
     section{padding:40px 0}
     h2{font-size:clamp(24px,4.5vw,34px);margin:0 0 18px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
