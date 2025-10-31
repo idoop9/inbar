@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inbar Perets</title>
   <meta name="description" content="Resume site for Inbar Perets" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --card:#111827;
-      --brand:#22d3ee; --brand-2:#a78bfa; --radius:18px; --maxw:960px;
+      --bg:#2a2f3d; --text:#b7bbb4; --muted:#a294b8; --card:#111827;
+      --brand:#8560a7; --brand-2:#a78bfa; --radius:18px; --maxw:960px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     body{
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      font-family:'Noto Sans JP',system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
       line-height:1.6; color:var(--text);
       background:
         radial-gradient(1200px 800px at 80% -10%, rgba(34,211,238,.15), transparent 60%),
@@ -56,21 +57,23 @@
       <div class="menu">
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
+
       </div>
     </div>
   </nav>
 
   <header class="hero container">
     <!-- replace profile.jpg with a real headshot file in the repo -->
-    <img src="profile.jpg" alt="Inbar Perets" class="profile-pic" />
-    <span class="pill">Welcome</span>
+    <!-- <img src="profile.jpg" alt="Inbar Perets" class="profile-pic" /> -->
+    <span  class="pill">Welcome</span>
     <h1>Hi, I am <span style="color:var(--brand)">Inbar</span></h1>
     <p>Neuroscience PhD student at the Weizmann Institute of Science. Based in Tel Aviv Yafo.</p>
   </header>
 
-  <section id="experience" class="container">
-    <h2>Experience</h2>
+  <section  id="experience" class="container">
+    <h2 class="h2">Experience</h2>
     <div class="grid">
       <article class="card">
         <h3>QA Engineer · ONE Technologies</h3>
@@ -93,7 +96,7 @@
   </section>
 
   <section id="education" class="container">
-    <h2>Education</h2>
+    <h2 class="h2">Education</h2>
     <div class="grid">
       <article class="card">
         <h3>Weizmann Institute of Science</h3>
@@ -106,8 +109,8 @@
     </div>
   </section>
 
-  <section class="container">
-    <h2>Skills</h2>
+  <section id="skills" class="container">
+    <h2 class="h2">Skills</h2>
     <div class="card" style="padding:24px">
       <p>Quality Assurance, Analytical thinking, SQL</p>
       <p>Languages: Hebrew native, English full professional, French limited working</p>
@@ -115,7 +118,7 @@
   </section>
 
   <section id="contact" class="container">
-    <h2>Contact</h2>
+    <h2 class="h2">Contact</h2>
     <div class="card" style="padding:24px">
       <p>Email: <a href="mailto:inbar6796@gmail.com">inbar6796@gmail.com</a><br>
       LinkedIn: <a href="https://www.linkedin.com/in/inbar-perets-88050622b" target="_blank" rel="noreferrer">inbar-perets</a></p>
@@ -126,8 +129,31 @@
     <p>© <span id="year"></span> Inbar Perets · Built with GitHub Pages</p>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+  // util
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Page-load animations (no SplitText, no ScrollTrigger)
+  function runIntro() {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.from(".nav", { y: -20, opacity: 0, duration: 0.6 })
+      .from(".hero h1", { y: 20, opacity: 0, duration: 0.7 }, "-=0.2")
+      .from(".h2", { y: 20, opacity: 0, duration: 0.7 }, "-=0.2")      
+      .from(".hero p", { y: 10, opacity: 0, duration: 0.6 }, "-=0.3")
+      .from(".pill", { scale: 0.1, opacity: 0.7, duration: 0.5 }, "-=0.4");
+  }
+  runIntro();
+
+  // Stagger in all cards on initial load
+  gsap.from(".card", {
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    stagger: 0.08,
+    ease: "power2.out",
+    delay: 0.5
+  });
+</script>
 </body>
 </html>
